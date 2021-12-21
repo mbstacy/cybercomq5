@@ -1,11 +1,11 @@
-from celery.task import task
+from celery import Celery
+import celeryconfig
 
-#Default base directory 
-#basedir="/data/static/"
-
+app = Celery()
+app.config_from_object(celeryconfig)
 
 #Example task
-@task()
+@app.task()
 def add(x, y):
     """ Example task that adds two numbers or strings
         args: x and y
