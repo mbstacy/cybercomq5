@@ -13,3 +13,12 @@ def add(x, y):
     """
     result = x + y
     return result
+    
+@app.task()
+def subtract(x, y):
+    """ Example task that subtract two numbers
+        args: x and y
+        return subtraction
+    """
+    result = x - y
+    return result
