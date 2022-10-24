@@ -22,3 +22,12 @@ def subtract(x, y):
     """
     result = x - y
     return result
+
+
+@app.task()
+def hello(name):
+    """ Example say Hello
+ 
+    """
+    result = "Hello {0}".format(name)
+    return result
