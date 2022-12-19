@@ -1,5 +1,6 @@
 from celery import Celery
 import celeryconfig
+from time import sleep
 
 app = Celery()
 app.config_from_object(celeryconfig)
@@ -27,7 +28,20 @@ def subtract(x, y):
 @app.task()
 def hello(name):
     """ Example say Hello
- 
+    args: name (string)
+    result: "Hello {name}"
+
     """
+    result = "Hello {0}".format(name)
+    return result
+
+@app.task()
+def longRunningHello(name):
+    """ Example say Hello - waits for 30 secs
+    args: name (string)
+    result: "Hello {name}"
+
+    """
+    sleep(30)
     result = "Hello {0}".format(name)
     return result
